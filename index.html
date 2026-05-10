@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riski Priyadi — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --cream: #f7f5f0;
+    --cream2: #f0ede6;
+    --white: #ffffff;
+    --ink: #1a1825;
+    --ink2: #3d3a4a;
+    --muted: #7c7a8a;
+    --border: #e4e0d8;
+    --indigo: #5b54e8;
+    --indigo-light: #eeedfc;
+    --indigo-mid: #c4c1f7;
+    --teal: #0d9e8c;
+    --teal-light: #e0f7f4;
+    --amber: #d97b06;
+    --amber-light: #fef3dc;
+    --rose: #d94f6f;
+    --violet: #8b5cf6;
+    --violet-light: #f3effe;
+    --cyan: #0891b2;
+    --cyan-light: #e0f7fb;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(91,84,232,.035) 0px, rgba(91,84,232,.035) 1px,
+      transparent 1px, transparent 32px
+    );
+  }
+  .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(18px);
+    background: rgba(247,245,240,.88);
+    border-bottom: 1px solid var(--border);
+    padding: .8rem 0;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--indigo); letter-spacing: 2px; }
+  .nav-logo span { color: var(--teal); }
+  .nav-pill {
+    display: flex; align-items: center; gap: 7px;
+    background: var(--teal-light); color: var(--teal);
+    border: 1px solid #9de8df; border-radius: 99px;
+    padding: 4px 12px; font-size: 12px; font-weight: 500;
+  }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(13,158,140,.45); }
+    50% { box-shadow: 0 0 0 6px rgba(13,158,140,0); }
+  }
+
+  .hero {
+    padding: 5rem 0 3.5rem;
+    display: grid; grid-template-columns: 1fr 180px;
+    gap: 2.5rem; align-items: center;
+  }
+  @media (max-width: 580px) {
+    .hero { grid-template-columns: 1fr; }
+    .avatar-col { display: none; }
+  }
+  .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; }
+  .eyebrow-line { height: 1px; width: 36px; background: linear-gradient(90deg, var(--indigo), transparent); }
+  .eyebrow-text { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--indigo); letter-spacing: 3px; text-transform: uppercase; }
+  h1 { font-size: clamp(38px, 6.5vw, 62px); font-weight: 700; line-height: 1.0; letter-spacing: -2px; margin-bottom: .4rem; color: var(--ink); }
+  h1 .accent { color: var(--indigo); }
+  .blink { display: inline-block; width: 3px; height: .82em; background: var(--indigo); margin-left: 3px; vertical-align: middle; animation: blink .9s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .hero-role { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--teal); letter-spacing: 1px; margin-bottom: 1rem; }
+  .hero-desc { font-size: 15.5px; color: var(--ink2); line-height: 1.8; max-width: 500px; margin-bottom: 1.75rem; }
+  .hero-desc strong { color: var(--indigo); font-weight: 600; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--indigo); color: #fff; border: none;
+    padding: 11px 22px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 18px rgba(91,84,232,.22);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: #4740d4; transform: translateY(-1px); }
+  .btn-ghost {
+    background: var(--white); color: var(--ink); border: 1.5px solid var(--border);
+    padding: 11px 22px; border-radius: 10px; font-size: 14px; font-weight: 500;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: var(--indigo); }
+
+  .avatar-col { display: flex; justify-content: center; }
+  .avatar-ring {
+    width: 168px; height: 168px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--indigo), var(--teal));
+    padding: 3px; position: relative;
+  }
+  .avatar-inner {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .avatar-inner svg { width: 100%; height: 100%; }
+  .avatar-badge {
+    position: absolute; bottom: 4px; right: -4px;
+    background: var(--teal); color: #fff;
+    font-size: 10px; font-family: 'DM Mono', monospace;
+    padding: 3px 9px; border-radius: 99px;
+    border: 2px solid var(--cream); white-space: nowrap;
+  }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr)); gap: 10px; margin-bottom: 3.5rem; }
+  .stat { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.1rem .9rem; text-align: center; }
+  .stat-num { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 500; color: var(--indigo); display: block; }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  .section { padding: 2.5rem 0; }
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 1.75rem; }
+  .sec-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--indigo); letter-spacing: 2px; }
+  .sec-title { font-size: 21px; font-weight: 600; color: var(--ink); }
+  .sec-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 13px; }
+  .card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 1.4rem;
+    position: relative; overflow: hidden;
+    transition: box-shadow .25s, transform .25s;
+  }
+  .card:hover { box-shadow: 0 8px 28px rgba(91,84,232,.09); transform: translateY(-3px); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .card.c1::before { background: linear-gradient(90deg, var(--indigo), var(--violet)); }
+  .card.c2::before { background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+  .card.c3::before { background: linear-gradient(90deg, var(--amber), var(--rose)); }
+  .card.c4::before { background: linear-gradient(90deg, var(--violet), var(--rose)); }
+  .card.c5::before { background: linear-gradient(90deg, var(--cyan), var(--indigo)); }
+  .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 12px; }
+  .card-icon.i1 { background: var(--indigo-light); color: var(--indigo); }
+  .card-icon.i2 { background: var(--teal-light); color: var(--teal); }
+  .card-icon.i3 { background: var(--amber-light); color: var(--amber); }
+  .card-icon.i4 { background: var(--violet-light); color: var(--violet); }
+  .card-icon.i5 { background: var(--cyan-light); color: var(--cyan); }
+  .card-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1.5px solid; font-family: 'DM Mono', monospace; }
+  .tag.t1 { color: var(--indigo); border-color: var(--indigo-mid); background: var(--indigo-light); }
+  .tag.t2 { color: var(--teal); border-color: #9de8df; background: var(--teal-light); }
+  .tag.t3 { color: var(--amber); border-color: #f9d87e; background: var(--amber-light); }
+  .tag.t4 { color: var(--violet); border-color: #d4b8fa; background: var(--violet-light); }
+  .tag.t5 { color: var(--cyan); border-color: #a5e8f5; background: var(--cyan-light); }
+
+  .contact-card {
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 1.75rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.25rem;
+  }
+  .contact-card h3 { font-size: 17px; font-weight: 600; margin-bottom: .25rem; }
+  .contact-card p { font-size: 13px; color: var(--muted); margin-bottom: .6rem; }
+  .email-link { display: inline-flex; align-items: center; gap: 7px; color: var(--indigo); font-weight: 500; font-size: 14px; text-decoration: none; }
+  .email-link:hover { text-decoration: underline; }
+  .proton-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--indigo-light); color: var(--indigo);
+    border: 1.5px solid var(--indigo-mid);
+    padding: 4px 11px; border-radius: 99px;
+    font-size: 10px; font-family: 'DM Mono', monospace; margin-top: 8px;
+  }
+  .ig-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: var(--indigo); font-size: 13px; font-weight: 500;
+    text-decoration: none; border: 1.5px solid var(--indigo-mid);
+    background: var(--indigo-light); padding: 9px 16px; border-radius: 10px;
+    transition: background .2s;
+  }
+  .ig-link:hover { background: var(--indigo-mid); }
+  .ig-link i { font-size: 18px; }
+
+  footer {
+    border-top: 1.5px solid var(--border); padding: 1.75rem 0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px; margin-top: 1rem;
+  }
+  .footer-left { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+  .footer-right { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--indigo-mid); }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26,24,37,.35); z-index: 200;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(5px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--white); border-radius: 18px; padding: 2rem; max-width: 380px; width: 90%; box-shadow: 0 24px 64px rgba(0,0,0,.12); }
+  .modal h3 { font-size: 18px; font-weight: 600; margin-bottom: .4rem; }
+  .modal p { font-size: 13px; color: var(--muted); margin-bottom: 1.1rem; line-height: 1.6; }
+  .modal-email {
+    background: var(--indigo-light); border: 1.5px solid var(--indigo-mid);
+    border-radius: 10px; padding: 11px 14px;
+    font-family: 'DM Mono', monospace; font-size: 13px; color: var(--indigo);
+    margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px;
+  }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .modal-cancel { background: none; border: 1.5px solid var(--border); padding: 9px 18px; border-radius: 9px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink2); }
+  .modal-confirm { background: var(--indigo); color: #fff; border: none; padding: 9px 18px; border-radius: 9px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--ink); color: #fff; border-radius: 99px;
+    padding: 10px 22px; font-size: 13px; font-weight: 500;
+    z-index: 300; opacity: 0; transition: all .35s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-logo">R<span>.</span>PRIYADI</div>
+    <div class="nav-pill"><span class="pulse"></span>Tersedia untuk kerja sama</div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <div class="eyebrow-text">Portofolio — 2025</div>
+      </div>
+      <h1>Riski <span class="accent">Priyadi</span><span class="blink"></span></h1>
+      <div class="hero-role">// Marketplace · Logistik · Konten Digital</div>
+      <p class="hero-desc">
+        Spesialis e-commerce yang tahu cara kerja marketplace dari <strong>dalam ke luar</strong> —
+        dari listing produk, pelayanan pelanggan, hingga pengiriman langsung ke tangan pembeli.
+      </p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="document.querySelector('.modal-overlay').classList.add('open')">
+          <i class="ti ti-mail"></i> Hubungi Saya
+        </button>
+        <button class="btn-ghost" onclick="downloadCV()">
+          <i class="ti ti-download"></i> Download CV
+        </button>
+      </div>
+    </div>
+    <div class="avatar-col">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <svg viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+            <rect width="168" height="168" fill="#ede9f8"/>
+            <ellipse cx="84" cy="148" rx="52" ry="24" fill="#5b54e8" opacity=".1"/>
+            <rect x="46" y="100" width="76" height="68" rx="20" fill="#5b54e8"/>
+            <path d="M72 100 L84 115 L96 100" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="74" y="93" width="20" height="12" rx="6" fill="#f5d8b8"/>
+            <ellipse cx="84" cy="76" rx="28" ry="29" fill="#f5d8b8"/>
+            <ellipse cx="84" cy="52" rx="28" ry="14" fill="#2d2a3e"/>
+            <rect x="56" y="52" width="56" height="14" fill="#2d2a3e"/>
+            <rect x="56" y="60" width="8" height="16" rx="4" fill="#2d2a3e"/>
+            <rect x="104" y="60" width="8" height="16" rx="4" fill="#2d2a3e"/>
+            <ellipse cx="56" cy="78" rx="5" ry="7" fill="#f5d8b8"/>
+            <ellipse cx="112" cy="78" rx="5" ry="7" fill="#f5d8b8"/>
+            <ellipse cx="73" cy="77" rx="4.5" ry="5" fill="#2d2a3e"/>
+            <ellipse cx="95" cy="77" rx="4.5" ry="5" fill="#2d2a3e"/>
+            <ellipse cx="74.5" cy="75.5" rx="1.5" ry="1.5" fill="white"/>
+            <ellipse cx="96.5" cy="75.5" rx="1.5" ry="1.5" fill="white"/>
+            <path d="M68 70 Q73 67 78 70" stroke="#2d2a3e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M90 70 Q95 67 100 70" stroke="#2d2a3e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M75 87 Q84 95 93 87" stroke="#c28050" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="avatar-badge">📍 DIY, Indonesia</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-num">6+</span><div class="stat-label">Platform Marketplace</div></div>
+    <div class="stat"><span class="stat-num">3</span><div class="stat-label">Bidang Keahlian</div></div>
+    <div class="stat"><span class="stat-num">100%</span><div class="stat-label">Hands-on</div></div>
+    <div class="stat"><span class="stat-num">DIY</span><div class="stat-label">Yogyakarta</div></div>
+  </div>
+
+  <section class="section">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Keahlian</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="grid">
+      <div class="card c1">
+        <div class="card-icon i1"><i class="ti ti-shopping-bag"></i></div>
+        <div class="card-title">Marketplace & E-commerce</div>
+        <div class="tags">
+          <span class="tag t1">Shopee</span><span class="tag t1">TikTok Shop</span><span class="tag t1">Tokopedia</span><span class="tag t1">Facebook Mkt</span><span class="tag t1">OLX · Toco</span><span class="tag t1">Input produk</span><span class="tag t1">Net sales</span><span class="tag t1">Rumus harga jual</span>
+        </div>
+      </div>
+      <div class="card c2">
+        <div class="card-icon i2"><i class="ti ti-truck-delivery"></i></div>
+        <div class="card-title">Logistik & Operasional</div>
+        <div class="tags">
+          <span class="tag t2">Shopee Driver</span><span class="tag t2">COD & Tunai</span><span class="tag t2">SPX</span><span class="tag t2">Pengiriman lapangan</span><span class="tag t2">Pengemasan</span><span class="tag t2">Barang fisik & makanan</span>
+        </div>
+      </div>
+      <div class="card c3">
+        <div class="card-icon i3"><i class="ti ti-headset"></i></div>
+        <div class="card-title">Customer Service</div>
+        <div class="tags">
+          <span class="tag t3">Penjelasan produk</span><span class="tag t3">Handling keluhan</span><span class="tag t3">Komunikasi persuasif</span><span class="tag t3">Detail kondisi</span>
+        </div>
+      </div>
+      <div class="card c4">
+        <div class="card-icon i4"><i class="ti ti-device-laptop"></i></div>
+        <div class="card-title">Produk Digital</div>
+        <div class="tags">
+          <span class="tag t4">Instalasi Windows</span><span class="tag t4">Software setup</span><span class="tag t4">Konten visual AI</span><span class="tag t4">Thumbnail produk</span>
+        </div>
+      </div>
+      <div class="card c5">
+        <div class="card-icon i5"><i class="ti ti-pencil"></i></div>
+        <div class="card-title">Konten & Copywriting</div>
+        <div class="tags">
+          <span class="tag t5">Deskripsi produk</span><span class="tag t5">Konten edukatif</span><span class="tag t5">Instagram content</span><span class="tag t5">Bahasa teknis simpel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Kontak</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-card">
+      <div>
+        <h3>Riski Priyadi</h3>
+        <p>Tersedia untuk freelance, kolaborasi, atau peluang kerja.</p>
+        <a class="email-link" href="mailto:riskipriyadi@protonmail.com">
+          <i class="ti ti-mail" style="font-size:17px"></i>
+          riskipriyadi@protonmail.com
+        </a>
+        <div><span class="proton-badge">🔒 ProtonMail — end-to-end encrypted</span></div>
+      </div>
+      <a class="ig-link" href="https://instagram.com/ronin.monetaro" target="_blank" rel="noopener">
+        <i class="ti ti-brand-instagram"></i>@ronin.monetaro
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">© 2025 Riski Priyadi — Yogyakarta, DIY</div>
+    <div class="footer-right">Built with ☕ & semangat</div>
+  </footer>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <h3>📧 Hubungi Saya</h3>
+    <p>Kirim email melalui ProtonMail untuk komunikasi yang aman dan terenkripsi.</p>
+    <div class="modal-email">
+      <i class="ti ti-lock" style="font-size:16px"></i>
+      riskipriyadi@protonmail.com
+    </div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="this.closest('.modal-overlay').classList.remove('open')">Tutup</button>
+      <button class="modal-confirm" onclick="window.open('mailto:riskipriyadi@protonmail.com')">
+        <i class="ti ti-send"></i> Kirim Email
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="ti ti-check"></i> CV berhasil diunduh!</div>
+
+<script>
+function downloadCV() {
+  const cv = `RISKI PRIYADI
+Marketplace · Logistik · Konten Digital
+Yogyakarta, DIY — Indonesia
+Email  : riskipriyadi@protonmail.com
+IG     : @ronin.monetaro
+
+══════════════════════════════════════
+PROFIL
+══════════════════════════════════════
+Spesialis e-commerce dengan pengalaman nyata di berbagai
+platform marketplace Indonesia. Terbiasa mengelola operasional
+dari hulu ke hilir: listing produk, customer service, hingga
+pengiriman lapangan langsung sebagai Shopee Driver aktif.
+
+══════════════════════════════════════
+KEAHLIAN
+══════════════════════════════════════
+
+1. MARKETPLACE & E-COMMERCE
+   Platform  : Shopee, TikTok Shop, Tokopedia,
+               Facebook Marketplace, OLX, Toco
+   Skill     : Input produk, penulisan judul & deskripsi,
+               pembuatan thumbnail (foto HP & AI),
+               perhitungan net sales, rumus harga jual
+               berbasis potongan admin aktual
+
+2. LOGISTIK & OPERASIONAL
+   - Shopee Driver aktif: pengambilan, pengiriman, serah terima
+   - Familiar dengan COD, tunai, dan SPX
+   - Pengemasan barang fisik, makanan, dan barang kiriman
+
+3. CUSTOMER SERVICE
+   - Penjelasan kondisi, fungsi, dan detail produk
+   - Handling komplain dengan komunikasi persuasif
+
+4. PRODUK DIGITAL
+   - Instalasi Windows dan software
+   - Pembuatan konten visual produk menggunakan AI
+
+5. KONTEN & COPYWRITING
+   - Penulisan deskripsi produk informatif & persuasif
+   - Konten edukatif di Instagram (@ronin.monetaro)
+   - Terbiasa menjelaskan hal teknis dengan bahasa simpel
+
+══════════════════════════════════════
+KONTAK
+══════════════════════════════════════
+Email    : riskipriyadi@protonmail.com
+Instagram: @ronin.monetaro
+Lokasi   : Yogyakarta, DIY — Indonesia`;
+
+  const blob = new Blob([cv], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'CV-Riski-Priyadi.txt';
+  a.click(); URL.revokeObjectURL(url);
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+
+</body>
+</html>
