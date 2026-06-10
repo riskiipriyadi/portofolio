@@ -1167,7 +1167,125 @@ footer .inner {
   .ct-form-row { grid-template-columns: 1fr; }
 }
 
+
+/* ─── MARKETPLACE TOOLTIP ─── */
+.stat-item { position: relative; }
+
+.marketplace-icons {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  display: flex;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-xl), 0 0 0 1px rgba(99,102,241,0.08);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.35s var(--ease-out);
+  z-index: 200;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Arrow / caret */
+.marketplace-icons::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-bottom-color: var(--bg-elev);
+}
+.marketplace-icons::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-bottom-color: var(--border);
+  z-index: -1;
+  margin-bottom: 1px;
+}
+
+.stat-item:hover .marketplace-icons {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mp-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  cursor: default;
+  position: relative;
+}
+.mp-icon:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Brand colors */
+.mp-shopee  { background: #EE4D2D; }
+.mp-tiktok  { background: #000000; }
+.mp-tokped  { background: #03AC0E; }
+.mp-fb      { background: #1877F2; }
+.mp-toco    { background: #F59E0B; }
+
+/* Stagger animation saat muncul */
+.stat-item:hover .mp-icon:nth-child(1) { transition-delay: 0.04s; }
+.stat-item:hover .mp-icon:nth-child(2) { transition-delay: 0.08s; }
+.stat-item:hover .mp-icon:nth-child(3) { transition-delay: 0.12s; }
+.stat-item:hover .mp-icon:nth-child(4) { transition-delay: 0.16s; }
+.stat-item:hover .mp-icon:nth-child(5) { transition-delay: 0.20s; }
+
+/* Mobile: tetap relative, tooltip menyesuaikan */
+@media (max-width: 768px) {
+  .marketplace-icons {
+    top: auto;
+    bottom: calc(100% + 14px);
+    transform: translateX(-50%) translateY(-8px);
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 220px;
+  }
+  .marketplace-icons::before {
+    bottom: auto;
+    top: 100%;
+    border-bottom-color: transparent;
+    border-top-color: var(--bg-elev);
+  }
+  .marketplace-icons::after {
+    bottom: auto;
+    top: 100%;
+    border-bottom-color: transparent;
+    border-top-color: var(--border);
+    margin-bottom: 0;
+    margin-top: 1px;
+  }
+  .stat-item:hover .marketplace-icons {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1243,6 +1361,13 @@ footer .inner {
       <div class="stat-item">
         <div class="stat-n c-t" data-count="5">0</div>
         <div class="stat-l">Platform marketplace</div>
+        <div class="marketplace-icons">
+          <div class="mp-icon mp-shopee" title="Shopee">Sh</div>
+          <div class="mp-icon mp-tiktok" title="TikTok Shop">Tk</div>
+          <div class="mp-icon mp-tokped" title="Tokopedia">Tp</div>
+          <div class="mp-icon mp-fb" title="Facebook Marketplace">Fb</div>
+          <div class="mp-icon mp-toco" title="Toco">Tc</div>
+        </div>
       </div>
       <div class="stat-item">
         <div class="stat-n">GAS · PS · PY</div>
