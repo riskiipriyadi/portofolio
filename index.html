@@ -1119,8 +1119,55 @@ footer .inner {
   .terminal-wrap.posh-theme { min-width: unset; width: 100%; }
 }
 
+/* ─── CONTACT FORM ─── */
+.ct-form {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ct-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.ct-form input,
+.ct-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+.ct-form input::placeholder,
+.ct-form textarea::placeholder { color: var(--text-3); }
+.ct-form input:focus,
+.ct-form textarea:focus {
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+}
+.ct-form-success {
+  display: none;
+  color: var(--teal-d);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  background: var(--teal-bg);
+  border: 1px solid rgba(20,184,166,0.2);
+  border-radius: var(--r-md);
+}
+.ct-form-success.show { display: block; }
+@media (max-width: 768px) {
+  .ct-form-row { grid-template-columns: 1fr; }
+}
+
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -1462,13 +1509,22 @@ footer .inner {
         </div>
         <div class="ct-row">
           <div class="ct-row-icon">🔗</div>
-          <span>- Ganti dengan link GitHub / email / WhatsApp kamu -</span>
+          <span><a href="https://github.com/riskiipriyadi" target="_blank" rel="noopener">github.com/riskiipriyadi</a></span>
         </div>
       </div>
-      <a href="#" class="cta-btn">
-        <span>Mulai Percakapan</span>
-        <span>→</span>
-      </a>
+
+      <form action="https://formspree.io/f/maqzdqeq" method="POST" class="ct-form" id="contactForm">
+        <div class="ct-form-row">
+          <input type="text" name="name" placeholder="Nama kamu" required>
+          <input type="email" name="email" placeholder="Email kamu" required>
+        </div>
+        <textarea name="message" placeholder="Ceritakan kebutuhan atau proyekmu..." rows="4" required></textarea>
+        <button type="submit" class="cta-btn" id="submitBtn">
+          <span>Kirim Pesan</span>
+          <span>→</span>
+        </button>
+        <p class="ct-form-success" id="formSuccess">Pesan terkirim! Aku akan membalas segera.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -1618,6 +1674,36 @@ if (window.matchMedia('(pointer: fine)').matches) {
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';
     });
+  });
+}
+
+// ─── FORMSPREE AJAX SUBMIT ───
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formSuccess = document.getElementById('formSuccess');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.querySelector('span').textContent = 'Mengirim...';
+    submitBtn.disabled = true;
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        contactForm.reset();
+        formSuccess.classList.add('show');
+        submitBtn.querySelector('span').textContent = 'Terkirim ✓';
+      } else {
+        submitBtn.querySelector('span').textContent = 'Gagal, coba lagi';
+        submitBtn.disabled = false;
+      }
+    } catch {
+      submitBtn.querySelector('span').textContent = 'Gagal, coba lagi';
+      submitBtn.disabled = false;
+    }
   });
 }
 
