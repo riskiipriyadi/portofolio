@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portofolio — Power User & Builder</title>
+<title>Portofolio - Riski Priyadi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1009,6 +1009,115 @@ footer .inner {
 @media (min-width: 769px) and (max-width: 900px) {
   .grid-s { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ─── POWERSHELL 7 OH-MY-POSH TERMINAL ─── */
+.terminal-wrap.posh-theme {
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  font-family: var(--font-mono);
+  min-width: 420px;
+  position: relative;
+  overflow: hidden;
+}
+.terminal-wrap.posh-theme:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+.posh-theme .terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #1a1a1a;
+  border-bottom: 1px solid #2a2a2a;
+  position: relative;
+}
+.posh-theme .tb-title {
+  margin-left: auto; margin-right: auto;
+  font-size: 11px; 
+  color: #888;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+.posh-theme .tb-r { background: #ff5f57; }
+.posh-theme .tb-y { background: #febc2e; }
+.posh-theme .tb-g { background: #28c840; }
+.posh-theme .terminal-body {
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-size: 13.5px;
+  min-height: 56px;
+  background: #111111;
+  position: relative;
+}
+.posh-theme .posh-user {
+  color: #c084fc;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.posh-theme .posh-in {
+  color: #a0a0a0;
+  margin-right: 6px;
+}
+.posh-theme .posh-path {
+  color: #22d3ee;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.posh-theme .posh-on {
+  color: #a0a0a0;
+  margin-right: 6px;
+}
+.posh-theme .posh-branch {
+  color: #4ade80;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.posh-theme .posh-dot {
+  color: #fb923c;
+  margin-right: 6px;
+}
+.posh-theme .posh-count {
+  color: #facc15;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.posh-theme .posh-lambda {
+  color: #4ade80;
+  font-weight: 700;
+  margin-right: 8px;
+}
+.posh-theme .tw-text { 
+  color: #e4e4e4; 
+  min-width: 10px; 
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.posh-theme .cursor {
+  display: inline-block;
+  width: 10px; height: 2px;
+  background: #4ade80;
+  border-radius: 1px;
+  vertical-align: baseline;
+  animation: blink-posh 1s step-end infinite;
+  margin-left: 2px;
+  position: relative;
+  top: -2px;
+}
+@keyframes blink-posh { 
+  0%, 100% { opacity: 1; } 
+  50% { opacity: 0; } 
+}
+
+@media (max-width: 768px) {
+  .terminal-wrap.posh-theme { min-width: unset; width: 100%; }
+}
+
 </style>
 <base target="_blank">
 </head>
@@ -1052,21 +1161,27 @@ footer .inner {
 <section class="hero" id="home">
   <div class="container">
     <div class="eyebrow reveal"><span class="eyebrow-dash"></span>tersedia untuk kolaborasi</div>
-    <h1 class="reveal">Builder.<br><em>Otomator.</em><br>Problem Solver.</h1>
+    <h1 class="reveal"><em>Riski Priyadi</em><br>Builder. Otomator. Problem Solver.</h1>
     <p class="hero-sub reveal reveal-delay-1">
-      Membangun sistem otomasi, tools scripting, dan workflow produktivitas — dari PowerShell hingga Google Apps Script, dari prompt engineering hingga marketplace.
+      Membangun sistem otomasi, tools scripting, dan workflow produktivitas - dari PowerShell hingga Google Apps Script, dari prompt engineering hingga marketplace.
     </p>
 
-    <div class="terminal-wrap reveal reveal-delay-2">
+    <div class="terminal-wrap posh-theme reveal reveal-delay-2">
       <div class="terminal-bar">
         <span class="tb-dot tb-r"></span>
         <span class="tb-dot tb-y"></span>
         <span class="tb-dot tb-g"></span>
-        <span class="tb-title">bash — ~/portfolio</span>
+        <span class="tb-title">PowerShell 7 - ~/portfolio</span>
       </div>
       <div class="terminal-body">
-        <span class="prompt-path">~/work</span>
-        <span class="prompt">$</span>
+        <span class="posh-user">runner</span>
+        <span class="posh-in">in</span>
+        <span class="posh-path">~/work</span>
+        <span class="posh-on">on</span>
+        <span class="posh-branch">main</span>
+        <span class="posh-dot">●</span>
+        <span class="posh-count">~1</span>
+        <span class="posh-lambda">λ</span>
         <span class="tw-text" id="tw"></span>
         <span class="cursor"></span>
       </div>
@@ -1110,9 +1225,9 @@ footer .inner {
           <div class="sk-name">Teknis & Windows</div>
         </div>
         <ul class="sk-list">
-          <li>PowerShell 7 — otomasi sistem, power plan, batch metadata MP3, firewall, spec checker</li>
+          <li>PowerShell 7 - otomasi sistem, power plan, batch metadata MP3, firewall, spec checker</li>
           <li>Python scripts: file tree scanner, batch konversi gambar via ffmpeg</li>
-          <li>AutoHotkey v2 — macro & shortcut kustom</li>
+          <li>AutoHotkey v2 - macro & shortcut kustom</li>
           <li>VirtualBox tray tool (clipboard + drag-drop toggle)</li>
           <li>Upgrade hardware laptop & rakit PC</li>
           <li>GitHub Pages + Jekyll (Chirpy theme)</li>
@@ -1140,7 +1255,7 @@ footer .inner {
         </div>
         <ul class="sk-list">
           <li>Dashboard status AI: sparkline, auto-sort, gradasi warna, trigger 1 menit</li>
-          <li>Rekap Keuangan Harian Real Time — 8 akun, utang-piutang, grafik kumulatif</li>
+          <li>Rekap Keuangan Harian Real Time - 8 akun, utang-piutang, grafik kumulatif</li>
           <li>Dialog HTML multi-step (Transfer Antar Akun) dengan logo SVG per akun</li>
           <li>Backup otomatis harian, ganti bulan otomatis, WebApp GAS</li>
           <li>Versioning: INBOX → DEV → STAGING → STABLE → ARCHIVE + Roll-Version.ps1</li>
@@ -1342,11 +1457,11 @@ footer .inner {
       <div class="ct-rows">
         <div class="ct-row">
           <div class="ct-row-icon">📍</div>
-          <span>Indonesia — tersedia untuk remote, freelance, dan kolaborasi project</span>
+          <span>Indonesia - tersedia untuk remote, freelance, dan kolaborasi project</span>
         </div>
         <div class="ct-row">
           <div class="ct-row-icon">🔗</div>
-          <span>— Ganti dengan link GitHub / email / WhatsApp kamu —</span>
+          <span>- Ganti dengan link GitHub / email / WhatsApp kamu -</span>
         </div>
       </div>
       <a href="#" class="cta-btn">
